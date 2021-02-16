@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -21,15 +21,17 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resources([
-        'users' => 'UserController',
-        'providers' => 'ProviderController',
-        'inventory/products' => 'ProductController',
-        'clients' => 'ClientController',
-        'inventory/categories' => 'ProductCategoryController',
+        'users'                 => 'UserController',
+        'providers'             => 'ProviderController',
+        'inventory/products'    => 'ProductController',
+        'clients'               => 'ClientController',
+        'inventory/categories'  => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',
-        'methods' => 'MethodController',
+        'methods'               => 'MethodController',
     ]);
-    
+
+    Route::get('/blackbox', [App\Http\Controllers\BlackboxController::class, 'index']);
+
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);
     Route::get('transactions/{type}', ['as' => 'transactions.type', 'uses' => 'TransactionController@type']);

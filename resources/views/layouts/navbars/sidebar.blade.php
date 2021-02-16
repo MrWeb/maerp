@@ -7,7 +7,13 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
+            <li @if ($pageSlug == 'blackbox') class="active " @endif>
+                <a href="{{ route('home') }}">
+                    <i class="tim-icons icon-watch-time"></i>
+                    <p>Blackbox</p>
+                </a>
+            </li>
+            {{-- <li>
                 <a data-toggle="collapse" href="#transactions" {{ $section == 'transactions' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-bank" ></i>
                     <span class="nav-link-text">Transactions</span>
@@ -60,8 +66,8 @@
                         </li>
                     </ul>
                 </div>
-            </li>
-
+            </li> --}}
+{{--
             <li>
                 <a data-toggle="collapse" href="#inventory" {{ $section == 'inventory' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-app"></i>
@@ -118,7 +124,7 @@
                     <i class="tim-icons icon-wallet-43"></i>
                     <p>Methods and Accounts</p>
                 </a>
-            </li>
+            </li> --}}
 
 
             <!-- <li>
@@ -150,7 +156,7 @@
             <li>
                 <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-badge" ></i>
-                    <span class="nav-link-text">Users</span>
+                    <span class="nav-link-text">Utenti</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -159,19 +165,19 @@
                         <li @if ($pageSlug == 'profile') class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
                                 <i class="tim-icons icon-badge"></i>
-                                <p>My profile</p>
+                                <p>Il Mio Profilo</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'users-list') class="active " @endif>
                             <a href="{{ route('users.index')  }}">
                                 <i class="tim-icons icon-notes"></i>
-                                <p>Manage Users</p>
+                                <p>Gestisci Utenti</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'users-create') class="active " @endif>
                             <a href="{{ route('users.create')  }}">
                                 <i class="tim-icons icon-simple-add"></i>
-                                <p>New user</p>
+                                <p>Nuovo Utente</p>
                             </a>
                         </li>
                     </ul>
